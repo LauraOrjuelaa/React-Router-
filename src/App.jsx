@@ -3,13 +3,18 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import TodoList from './components/TodoList.jsx';
 import TodoNew from './components/TodoNew.jsx';
 import TodoDetail from './components/TodoDetail.jsx';
+import { useDispatch } from 'react-redux';
+import { addTodo } from './redux/todoSlice.jsx'; // Importa la acción addTodo
 
 function App() {
+  const dispatch = useDispatch();
   const [todos, setTodos] = useState([]);
 
   const handleAddTodo = (newTodo) => {
     setTodos([...todos, newTodo]);
+    dispatch(addTodo(newTodo)); // Envia la acción addTodo con el nuevo todo
   };
+  
 
   return (
     <Router>
@@ -22,7 +27,7 @@ function App() {
           path="/new"
           element={<TodoNew handleAddTodo={handleAddTodo} />}
         />
-        <Route path="/todo/:id" element={<TodoDetail />} />
+        <Route path="/detail" element={<TodoDetail todos={todos} />}/>
       </Routes>
     </Router>
   );
