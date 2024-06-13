@@ -4,7 +4,7 @@ import TodoList from './components/TodoList.jsx';
 import TodoNew from './components/TodoNew.jsx';
 import TodoDetail from './components/TodoDetail.jsx';
 import { useDispatch } from 'react-redux';
-import { addTodo } from './redux/todoSlice.jsx'; // Importa la acción addTodo
+import { addTodo } from './redux/todoSlice.jsx'; 
 
 function App() {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ function App() {
 
   const handleAddTodo = (newTodo) => {
     setTodos([...todos, newTodo]);
-    dispatch(addTodo(newTodo)); // Envia la acción addTodo con el nuevo todo
+    dispatch(addTodo(newTodo)); 
   };
   
 
